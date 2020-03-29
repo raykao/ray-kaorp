@@ -13,3 +13,7 @@ output "consulMasterSubnet" {
 output "azureFirewallSubnet" {
   value = azurerm_subnet.azureFirewall.id
 }
+
+output "azureFirewallPublicIP" {
+  value = azurerm_public_ip.azureFirewall.ip_address
+}

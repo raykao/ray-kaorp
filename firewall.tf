@@ -10,19 +10,27 @@ resource "azurerm_firewall" "hub" {
   }
 }
 
-resource "azurerm_route_table" "example" {
-  name                          = "acceptanceTestSecurityGroup1"
-  location                      = azurerm_resource_group.hub.location
-  resource_group_name           = azurerm_resource_group.hub.name
-  disable_bgp_route_propagation = false
+// resource "azurerm_firewall_application_rule_collection" "example" {
+//   name                = "testcollection"
+//   azure_firewall_name = azurerm_firewall.example.name
+//   resource_group_name = azurerm_resource_group.example.name
+//   priority            = 100
+//   action              = "Allow"
 
-  route {
-    name           = "route1"
-    address_prefix = "10.1.0.0/16"
-    next_hop_type  = "vnetlocal"
-  }
+//   rule {
+//     name = "testrule"
 
-  tags = {
-    environment = "Production"
-  }
-}
+//     source_addresses = [
+//       "10.0.0.0/16",
+//     ]
+
+//     target_fqdns = [
+//       "*.google.com",
+//     ]
+
+//     protocol {
+//       port = "443"
+//       type = "Https"
+//     }
+//   }
+// }
