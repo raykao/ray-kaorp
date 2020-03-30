@@ -14,7 +14,7 @@ resource "azurerm_route_table" "aks" {
 
   route {
     name           = "Internet"
-    address_prefix = "${azurerm_public_ip.azureFirewall.ip_address}/${var.public_ip_prefix}"
+    address_prefix = azurerm_public_ip_prefix.hub.ip_prefix
     next_hop_type  = "Internet"
   }
 }

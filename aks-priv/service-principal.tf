@@ -13,3 +13,9 @@ resource "azuread_service_principal_password" "aks" {
   value                = random_password.aks-sp-secret.result
   end_date_relative    = "8760h"
 }
+
+resource "azurerm_role_assignment" "loadbalancer-subnet-contributor" {
+  scope                = var.load_balancer_subnet_id
+  role_definition_name = "contributor"
+  principal_id         = azuread_service_principal.aks.object_id
+}

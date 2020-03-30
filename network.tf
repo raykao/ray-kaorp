@@ -5,13 +5,6 @@ resource "azurerm_virtual_network" "hub" {
   location            = azurerm_resource_group.hub.location
 }
 
-resource "azurerm_subnet" "default" {
-  name                 = "default"
-  resource_group_name  = azurerm_resource_group.hub.name
-  virtual_network_name = azurerm_virtual_network.hub.name
-  address_prefix       = "10.0.1.0/24"
-}
-
 resource "azurerm_subnet" "azureFirewall" {
   name                 = "AzureFirewallSubnet"
   resource_group_name  = azurerm_resource_group.hub.name
@@ -34,6 +27,12 @@ resource "azurerm_subnet" "consulMasters" {
   address_prefix       = "10.0.0.128/28"
 }
 
+resource "azurerm_subnet" "default" {
+  name                 = "default"
+  resource_group_name  = azurerm_resource_group.hub.name
+  virtual_network_name = azurerm_virtual_network.hub.name
+  address_prefix       = "10.0.1.0/24"
+}
 
 resource "azurerm_subnet" "aksPrivCluster" {
   name                  = "aksPriv"

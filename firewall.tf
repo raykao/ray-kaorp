@@ -4,7 +4,7 @@ resource "azurerm_firewall" "hub" {
   resource_group_name = azurerm_resource_group.hub.name
 
   ip_configuration {
-    name                 = "configuration"
+    name                 = "primary"
     subnet_id            = azurerm_subnet.azureFirewall.id
     public_ip_address_id = azurerm_public_ip.azureFirewall.id
   }

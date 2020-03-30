@@ -19,6 +19,10 @@ variable "subnet_id" {
   description = "Subnet ID to deploy AKS into"
 }
 
+variable "load_balancer_subnet_id" {
+  description = "Subnet ID for AKS Load Balancers Subnet"
+}
+
 variable "service_cidr" {
   description = "Kubernetes Services network range"
 }
