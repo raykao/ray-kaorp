@@ -10,27 +10,40 @@ resource "azurerm_firewall" "hub" {
   }
 }
 
-// resource "azurerm_firewall_application_rule_collection" "example" {
-//   name                = "testcollection"
-//   azure_firewall_name = azurerm_firewall.example.name
-//   resource_group_name = azurerm_resource_group.example.name
-//   priority            = 100
-//   action              = "Allow"
+resource "azurerm_firewall_application_rule_collection" "aks" {
+  name                = "AKS_Global_Required"
+  azure_firewall_name = azurerm_firewall.hub.name
+  resource_group_name = azurerm_resource_group.hub.name
+  priority            = 100
+  action              = "Allow"
 
-//   rule {
-//     name = "testrule"
+  rule {
+    name = "testrule"
 
-//     source_addresses = [
-//       "10.0.0.0/16",
-//     ]
+    source_addresses = [
+      "*",
+    ]
 
-//     target_fqdns = [
-//       "*.google.com",
-//     ]
+    target_fqdns = [
+        "aksrepos.azurecr.io",
+        "*blob.core.windows.net",
+        "mcr.microsoft.com",
+        "*cdn.mscr.io",
+        "*.data.mcr.microsoft.com",
+        "management.azure.com",
+        "login.microsoftonline.com",
+        "ntp.ubuntu.com",
+        "packages.microsoft.com",
+        "acs-mirror.azureedge.net"
+    ]
 
-//     protocol {
-//       port = "443"
-//       type = "Https"
-//     }
-//   }
-// }
+    protocol {
+      port = "443"
+      type = "Https"
+    }
+    protocol {
+      port = "80"
+      type = "Http"
+    }
+  }
+}

@@ -28,6 +28,14 @@ resource "azurerm_kubernetes_cluster" "aks" {
 
     load_balancer_sku  = "Standard"
   }
+
+  lifecycle {
+    ignore_changes = [
+      default_node_pool[0].node_count,
+      default_node_pool[0].vnet_subnet_id,
+      windows_profile
+    ]
+  }
 }
 
 resource "azurerm_kubernetes_cluster_node_pool" "secondary_pool" {
@@ -35,4 +43,12 @@ resource "azurerm_kubernetes_cluster_node_pool" "secondary_pool" {
   kubernetes_cluster_id = azurerm_kubernetes_cluster.aks.id
   vm_size               = "Standard_DS2_v2"
   node_count            = 1
+
+  lifecycle {
+    ignore_changes = [
+      kubernetes_cluster_id,
+      vnet_subnet_id,
+      node_count
+    ]
+  }
 }
