@@ -1,3 +1,13 @@
+resource "azurerm_public_ip" "jumpbox" {
+  name                = "pip-jumpbox"
+  resource_group_name = azurerm_resource_group.hub.name
+  location            = azurerm_resource_group.hub.location
+  allocation_method   = "Static"
+  sku                 = "Standard"
+  public_ip_prefix_id = azurerm_public_ip_prefix.hub.id
+  domain_name_label   = "rkjumpbox001"
+}
+
 resource "azurerm_network_interface" "jumpbox" {
   name                = "raykao-nic"
   location            = azurerm_resource_group.hub.location
