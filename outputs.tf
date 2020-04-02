@@ -17,3 +17,15 @@ output "azureFirewallSubnet" {
 output "azureFirewallPublicIP" {
   value = azurerm_public_ip.azureFirewall.ip_address
 }
+
+output "jumpbox-fqdn" {
+  value = module.jumpbox001.fqdn
+}
+
+output "jumpbox-username" {
+  value = module.jumpbox001.username
+}
+
+output "jumpbox-password" {
+  value = module.jumpbox001.password
+}
