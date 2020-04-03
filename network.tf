@@ -13,15 +13,15 @@ resource "azurerm_subnet" "azureFirewall" {
 }
 
 resource "azurerm_subnet" "loadBalancers" {
-  name                 = "LoadBalancers"
+  name                 = "loadBalancers"
   resource_group_name  = azurerm_resource_group.hub.name
   virtual_network_name = azurerm_virtual_network.hub.name
   address_prefix       = "10.0.0.64/26"
 }
 
 
-resource "azurerm_subnet" "consulMasters" {
-  name                 = "ConsulMasters"
+resource "azurerm_subnet" "consulVaultMasters" {
+  name                 = "consulVaultMasters"
   resource_group_name  = azurerm_resource_group.hub.name
   virtual_network_name = azurerm_virtual_network.hub.name
   address_prefix       = "10.0.0.128/28"

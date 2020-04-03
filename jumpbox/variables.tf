@@ -1,13 +1,13 @@
 variable "resource_group_name" {
-
+  default = ""
 }
 
 variable "location" {
 
 }
 
-variable "jumpbox_name" {
-
+variable "server_name" {
+  default = ""
 }
 
 variable "subnet_id" {

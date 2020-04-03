@@ -15,6 +15,10 @@ variable "private_cluster" {
   default = true
 }
 
+variable "vm_size" {
+  default = "Standard_D4s_v3"
+}
+
 variable "subnet_id" {
   description = "Subnet ID to deploy AKS into"
 }

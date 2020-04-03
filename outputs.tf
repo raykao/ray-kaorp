@@ -6,8 +6,8 @@ output "defaultSubnet" {
   value = azurerm_subnet.default.id
 }
 
-output "consulMasterSubnet" {
-  value = azurerm_subnet.consulMasters.id
+output "consulVaultMastersSubnet" {
+  value = azurerm_subnet.consulVaultMasters.id
 }
 
 output "azureFirewallSubnet" {

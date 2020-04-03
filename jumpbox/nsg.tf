@@ -1,5 +1,5 @@
 resource "azurerm_network_security_group" "jumpbox" {
-  name                = "nsg-${var.jumpbox_name}"
+  name                = "nsg-${var.server_name}"
   resource_group_name = azurerm_resource_group.jumpbox.name
   location            = azurerm_resource_group.jumpbox.location
 }

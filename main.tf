@@ -8,6 +8,6 @@ provider "azurerm" {
 }
 
 locals {
-  prefix    = var.prefix
+  prefix    = "${terraform.workspace}-${var.prefix}"
   location  = var.location
 }

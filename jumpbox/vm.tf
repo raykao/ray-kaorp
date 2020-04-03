@@ -17,17 +17,13 @@ resource "azurerm_network_interface_security_group_association" "jumpbox" {
 }
 
 resource "azurerm_virtual_machine" "jumpbox" {
-  name                  = var.jumpbox_name
+  name                  = local.server_name
   resource_group_name   = azurerm_resource_group.jumpbox.name
   location              = azurerm_resource_group.jumpbox.location  
   vm_size               = var.vm_size
 
   network_interface_ids = [azurerm_network_interface.jumpbox.id]
   
-  depends_on = [
-    azurerm_network_interface.jumpbox
-  ]
-
   storage_image_reference {
     publisher = "Canonical"
     offer     = "UbuntuServer"
@@ -41,7 +37,7 @@ resource "azurerm_virtual_machine" "jumpbox" {
     managed_disk_type = "Standard_LRS"
   }
   os_profile {
-    computer_name  = var.jumpbox_name
+    computer_name  = local.server_name
     admin_username = local.username
     admin_password = local.password
   }
