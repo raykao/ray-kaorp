@@ -43,9 +43,13 @@ resource "azurerm_virtual_machine" "jumpbox" {
   os_profile {
     computer_name  = local.server_name
     admin_username = local.username
-    admin_password = local.password
   }
   os_profile_linux_config {
-    disable_password_authentication = false
+    disable_password_authentication = true
+    
+    ssh_keys {
+      key_data  = file("~/.ssh/id_rsa.pub")
+      path      = "/home/${local.username}/.ssh/authorized_keys"
+    }
   }
 }
