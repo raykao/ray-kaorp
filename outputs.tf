@@ -14,9 +14,19 @@ output "azureFirewallSubnet" {
   value = azurerm_subnet.azureFirewall.id
 }
 
+// IP Addresses
+
 output "azureFirewallPublicIP" {
   value = azurerm_public_ip.azureFirewall.ip_address
 }
+
+output "publicPrefixId" {
+  value = azurerm_public_ip_prefix.hub.id
+}
+
+// Modules
+
+// Jumpbox
 
 output "jumpbox-fqdn" {
   value = module.jumpbox001.fqdn

@@ -24,6 +24,10 @@ resource "azurerm_virtual_machine" "jumpbox" {
 
   network_interface_ids = [azurerm_network_interface.jumpbox.id]
   
+  depends_on = [
+    azurerm_network_interface.jumpbox
+  ]
+
   storage_image_reference {
     publisher = "Canonical"
     offer     = "UbuntuServer"

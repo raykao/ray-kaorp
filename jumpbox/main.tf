@@ -1,3 +1,12 @@
+terraform {
+  required_version = "~> 0.12.23"
+}
+
+provider "azurerm" {
+  version = "=2.0.0"
+  features {}
+}
+
 resource "random_password" "password" {
   length = 16
   special = true
@@ -13,8 +22,8 @@ resource "random_pet" "servername" {
 }
 
 locals {
-  resource_group_name = var.resource_group_name != "" ? var.resource_group_name : "${random_pet.servername.id}-jbox"
-  server_name = var.server_name != "" ? var.server_name : "${random_pet.servername.id}-jbox"
+  resource_group_name = var.resource_group_name != "" ? var.resource_group_name : "${terraform.workspace}-${random_pet.servername.id}-jbox"
+  server_name = var.server_name != "" ? var.server_name : "${terraform.workspace}-${random_pet.servername.id}-jbox"
   username    = var.admin_username != "" ? var.admin_username : random_pet.username.id
   password    = var.admin_password != "" ? var.admin_password : random_password.password.result
 }

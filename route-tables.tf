@@ -1,6 +1,6 @@
 
 resource "azurerm_route_table" "aks" {
-  name                          = "RT-Global-AKS"
+  name                          = "${local.prefix}-rt-global-aks"
   location                      = azurerm_resource_group.hub.location
   resource_group_name           = azurerm_resource_group.hub.name
   disable_bgp_route_propagation = false

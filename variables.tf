@@ -3,7 +3,7 @@ variable "prefix" {
 }
 
 variable "location" {
-  default = "eastus"
+  default = "canadacentral"
 }
 
 variable "dns_zone_name" {

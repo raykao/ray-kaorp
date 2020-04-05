@@ -1,5 +1,5 @@
 resource "azurerm_public_ip" "jumpbox" {
-  name                = "pip-${var.server_name}"
+  name                = "${var.server_name}-pip"
   resource_group_name = azurerm_resource_group.jumpbox.name
   location            = azurerm_resource_group.jumpbox.location
   allocation_method   = "Static"
