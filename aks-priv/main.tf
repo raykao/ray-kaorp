@@ -2,11 +2,6 @@ terraform {
   required_version = "~> 0.12.23"
 }
 
-provider "azurerm" {
-  version = "=2.0.0"
-  features {}
-}
-
 # Configure the Microsoft Azure Active Directory Provider
 provider "azuread" {
   version = "=0.7.0"
