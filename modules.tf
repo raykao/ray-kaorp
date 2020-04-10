@@ -27,3 +27,15 @@ module "consul" {
   subnet_id           = azurerm_subnet.consulVaultMasters.id
   vmss_name           = "${local.prefix}-consulMasters"
 }
+
+module "aksPub" {
+  source = "./aks-priv"
+
+  cluster_name            = "${local.prefix}-pubaks"
+  resource_group_name     = "${local.prefix}-pubaks"
+  location                = azurerm_virtual_network.hub.location
+  private_cluster         = false
+  subnet_id               = azurerm_subnet.aksPubCluster.id
+  load_balancer_subnet_id = azurerm_subnet.loadBalancers.id
+  service_cidr            = "10.254.0.0/16"
+}

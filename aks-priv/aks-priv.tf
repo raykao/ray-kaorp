@@ -9,7 +9,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
     client_secret = random_password.aks-sp-secret.result
   }
 
-  private_link_enabled = true
+  private_link_enabled = var.private_cluster
 
   default_node_pool {
     name       = "default"

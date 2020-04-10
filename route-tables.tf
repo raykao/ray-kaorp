@@ -20,6 +20,6 @@ resource "azurerm_route_table" "aks" {
 }
 
 resource "azurerm_subnet_route_table_association" "aks" {
-  subnet_id      = azurerm_subnet.aksPrivCluster.id
   route_table_id = azurerm_route_table.aks.id
+  subnet_id      = azurerm_subnet.aksPrivCluster.id
 }
