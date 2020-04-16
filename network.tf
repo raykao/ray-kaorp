@@ -19,7 +19,6 @@ resource "azurerm_subnet" "loadBalancers" {
   address_prefix       = "10.0.0.64/26"
 }
 
-
 resource "azurerm_subnet" "consulVaultMasters" {
   name                 = "consulVaultMasters"
   resource_group_name  = azurerm_resource_group.hub.name
